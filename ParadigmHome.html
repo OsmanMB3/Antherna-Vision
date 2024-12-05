@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Scrolling Animation with Cybersecurity Focus</title>
+    <style>
+        @font-face {
+            font-family: 'Helvetica Neue';
+            src: local('HelveticaNeue-UltraLight'),
+                 local('HelveticaNeue-UltraLightItalic'),
+                 local('HelveticaNeue-UltraLightBold');
+            font-weight: 100;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            overflow-y: auto;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+
+        nav {
+            width: 100%;
+            padding-top: 20px;
+            z-index: 2;
+            position: relative;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            background-color: white;
+            border-radius: 15px;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInNav 1s ease forwards 0.5s;
+        }
+
+        @keyframes fadeInNav {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav li {
+            position: relative;
+            margin: 0 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: normal;
+            font-size: 14px;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            border-radius: 10px;
+            padding: 5px 10px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 3;
+            flex-direction: column;
+            padding: 0;
+            text-align: left;
+            width: 200px;
+            max-height: 150px;
+            overflow-y: auto;
+            border-radius: 10px;
+        }
+
+        .dropdown-content a {
+            color: #000000;
+            padding: 8px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 12px;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .dropdown-content a:hover {
+            background-color: transparent;
+            color: #000000;
+            text-decoration: underline;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: flex;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: filter 0.3s ease-in-out;
+            margin: 20px 0;
+        }
+
+        .popping-square {
+            width: 900px;
+            height: 500px;
+            background-color: white;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .smeared-circle {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(to right, #0000FF, rgba(0, 0, 255, 0.5), rgba(0, 0, 255, 0.2), white);
+            border-radius: 50%;
+            filter: blur(5px);
+        }
+
+        .text {
+            color: #000000;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 100;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .blurred {
+            filter: blur(8px);
+            pointer-events: none;
+        }
+
+        .paradigm-text {
+            font-size: 22px;
+            font-weight: 100;
+            color: #000000;
+            border-radius: 10px;
+            padding: 10px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1s;
+            margin: 50px 0;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .rectangle-box {
+            width: 900px;
+            height: 400px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 100;
+            color: #000000;
+            text-align: center;
+            padding: 20px;
+            transform: perspective(1000px) rotateX(0deg);
+            transition: transform 0.5s ease;
+        }
+
+        .rectangle-box:hover {
+            transform: perspective(1000px) rotateX(5deg);
+        }
+
+        .cybersecurity-text {
+            opacity: 0;
+            transform: translateY(-80px);
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            max-width: 800px;
+            color: #000000;
+            background-color: white;
+            border-radius: 15px;
+            margin-top: 50px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: all 1s ease;
+        }
+
+        .slideInDown {
+            opacity: 1;
+            transform: translateY(50px);
+        }
+
+        .shifting-text {
+            text-align: center;
+            color: #000000;
+            font-size: 45px;
+            font-weight: 100;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.5s;
+            margin: 150px 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .white-boxes-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 2s;
+        }
+
+        .white-box {
+            width: 300px;
+            height: 400px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 100;
+            padding: 15px;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .white-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .white-box ul {
+            list-style-type: disc;
+            color: #0000FF;
+            padding-left: 20px;
+            text-align: left;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .white-box ul li {
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .white-box ul li:hover {
+            color: #000080;
+        }
+
+        .pdf-preview {
+            width: 100%;
+            height: 250px;
+            border: 1px solid #ccc;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .pdf-preview:hover {
+            transform: scale(1.02);
+        }
+
+        .pdf-preview iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .stats-section {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            margin: 50px 0;
+            opacity: 0;
+            transform: translateY(200px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 100;
+            color: #0000FF;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        footer {
+            width: 100%;
+            background-color: white;
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 100;
+            color: #000000;
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            color: #0000FF;
+        }
+
+        .footer-section ul li {
+            margin: 8px 0;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section p {
+            color: #333;
+            font-weight: 100;
+            font-size: 14px;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .stats-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .popping-square {
+                width: 90%;
+                height: auto;
+                padding: 20px;
+            }
+
+            .rectangle-box {
+                width: 90%;
+                height: auto;
+                padding: 20px;
+            }
+
+            .white-boxes-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .white-box {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="content-wrapper">
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#">Research Initiatives</a>
+                        <div class="dropdown-content">
+                            <a href="#">Overview</a>
+                            <a href="#">Paper 1</a>
+                            <a href="#">Paper 2</a>
+                            <a href="#">Antherna</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Our Team</a>
+                        <div class="dropdown-content">
+                            <a href="#">Executives</a>
+                            <a href="#">Technical Team</a>
+                            <a href="#">Field Experts</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Digital Safety</a>
+                        <div class="dropdown-content">
+                            <a href="#">Safety Practices</a>
+                            <a href="#">Phishing Awareness</a>
+                            <a href="#">Data Encryption</a>
+                            <a href="#">Emerging Cyber Threats & Solutions</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="content">
+                <div class="popping-square">
+                    <div class="text">Proactive Pioneering within the Cyberspace;<br>Safeguarding Tomorrow's Digital World</div>
+                    <div class="smeared-circle"></div>
+                </div>
+            </div>
+
+            <div class="paradigm-text">
+                Forging New Cybersecurity Paradigms
+            </div>
+
+            <div class="cybersecurity-text">
+                We excel in creating robust defense mechanisms, safeguarding businesses and individuals alike from emerging threats. With a team of seasoned experts, we are at the forefront of the battle against cyber adversaries, delivering unparalleled security solutions that not only protect but also empower.
+            </div>
+
+            <div class="shifting-text">
+                Our Commitment to Innovation
+            </div>
+
+            <div class="white-boxes-container">
+                <div class="white-box">
+                    I<br><br>Cloud Threats & Remedies
+                    <ul>
+                        <li>Understanding Cloud Security</li>
+                        <li>Threat Detection Mechanisms</li>
+                        <li>Preventative Strategies</li>
+                    </ul>
+                    <div class="pdf-preview">
+                        <img src="https://www.spacex.com/media/falcon-users-guide-2021-09.pdf" alt="Cloud Security PDF Preview">
+                    </div>
+                </div>
+                <div class="white-box">
+                    II<br><br>Exploit Development & Prevention
+                    <ul>
+                        <li>Exploitation Techniques</li>
+                        <li>Vulnerability Patching</li>
+                        <li>Security Protocols</li>
+                    </ul>
+                    <div class="pdf-preview">
+                        <img src="https://www.spacex.com/media/falcon-users-guide-2021-09.pdf" alt="Exploit Development PDF Preview">
+                    </div>
+                </div>
+                <div class="white-box">
+                    III Antherna<br><br>Automated Pen Testing
+                    <ul>
+                        <li>Automation Tools</li>
+                        <li>Pen Testing Strategies</li>
+                        <li>Reporting & Analysis</li>
+                    </ul>
+                    <div class="pdf-preview">
+                        <img src="https://www.spacex.com/media/falcon-users-guide-2021-09.pdf" alt="Automated Pen Testing PDF Preview">
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Threat Detection Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Active Monitoring</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Enterprise Clients</div>
+                </div>
+            </div>
+
+            <div class="rectangle-box">
+                The many ambitious ways that Paradigm and the Software<br><br><br>Try Antherna, As seen Under Paper III.
+            </div>
+        </div>
+
+        <style>
+   footer {
+            width: 100%;
+            background: linear-gradient(to right, #ffffff, #f8f9fa);
+            padding: 60px 0 30px 0;
+            text-align: center;
+            position: relative;
+            margin-top: auto;
+            border-top: 1px solid rgba(0, 0, 255, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            gap: 80px;
+        }
+
+        .footer-brand {
+            text-align: left;
+            max-width: 300px;
+        }
+
+        .footer-brand h2 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 100;
+            font-size: 24px;
+            color: #000000;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-contact {
+            text-align: left;
+        }
+
+        .footer-contact h3 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 100;
+            font-size: 18px;
+            color: #000000;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #0000FF;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 255, 0.1);
+            font-size: 12px;
+            color: #666;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-brand, .footer-contact {
+                text-align: center;
+            }
+
+            .contact-info {
+                align-items: center;
+            }
+        }
+    </style>
+<footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>Paradigm Research</h2>
+                <p>Pioneering the future of cybersecurity through innovative research and cutting-edge solutions. Join us in creating a safer digital world.</p>
+            </div>
+            <div class="footer-contact">
+                <h3>Get in Touch</h3>
+                <div class="contact-info">
+                    <a href="mailto:info@paradigmresearch.com" class="contact-item">
+                        <span>info@paradigmresearch.com</span>
+                    </a>
+                    <div class="contact-item">
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>Edmonton, Canada</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Paradigm Research. All rights reserved.
+        </div>
+    </footer>
+    </div>
+
+    <script>
+        const navLinks = document.querySelectorAll('nav a');
+        const content = document.querySelector('.content');
+        const statsSection = document.querySelector('.stats-section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                content.classList.add('blurred');
+            });
+
+            link.addEventListener('mouseleave', () => {
+                content.classList.remove('blurred');
+            });
+        });
+
+        const cybersecurityText = document.querySelector('.cybersecurity-text');
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+
+            if (scrollPosition > 300) {
+                statsSection.style.opacity = '1';
+                statsSection.style.transform = 'translateY(0)';
+            }
+
+            if (scrollPosition > 50) {
+                cybersecurityText.classList.add('slideInDown');
+            }
+        });
+    </script>
+</body>
+</html>

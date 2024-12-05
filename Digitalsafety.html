@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Safety - Paradigm Research</title>
+    <style>
+        @font-face {
+            font-family: 'Helvetica Neue';
+            src: local('HelveticaNeue-UltraLight'), local('HelveticaNeue-UltraLightItalic'), local('HelveticaNeue-UltraLightBold');
+            font-weight: 100;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: white;
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .hero-section {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 100;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 100;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .safety-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .safety-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        .safety-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 255, 0.2);
+        }
+        .safety-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .safety-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+            color: #000;
+        }
+        .safety-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+        .tips-section {
+            padding: 80px 0;
+            margin-top: 50px;
+        }
+        .tips-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .tip-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        .tip-number {
+            font-size: 3rem;
+            font-weight: 100;
+            color: #0000FF;
+            margin-bottom: 15px;
+        }
+        .tip-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+        }
+        .footer {
+            margin-top: auto;
+            background-color: #ffff;
+            padding: 40px 0;
+            border-top: 1px solid #eaeaea;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: #0000FF;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #eaeaea;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        #particles-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        @media (max-width: 768px) {
+            .safety-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div id="particles-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Digital Safety</h1>
+            <p class="hero-subtitle">Protecting your digital presence through advanced security measures and best practices</p>
+        </div>
+    </div>
+
+    <div class="safety-grid">
+        <div class="safety-card">
+            <div class="safety-icon">
+                <img src="/api/placeholder/60/60" alt="Encryption Icon">
+            </div>
+            <h2 class="safety-title">End-to-End Encryption</h2>
+            <p class="safety-description">Implementing military-grade encryption protocols to secure your sensitive data during transmission and storage. Our advanced algorithms ensure your information remains protected against unauthorized access.</p>
+        </div>
+        <div class="safety-card">
+            <div class="safety-icon">
+                <img src="/api/placeholder/60/60" alt="Authentication Icon">
+            </div>
+            <h2 class="safety-title">Multi-Factor Authentication</h2>
+            <p class="safety-description">Enhance your security with our advanced MFA systems, combining biometric verification, hardware tokens, and time-based one-time passwords for robust access control.</p>
+        </div>
+        <div class="safety-card">
+            <div class="safety-icon">
+                <img src="/api/placeholder/60/60" alt="Monitoring Icon">
+            </div>
+            <h2 class="safety-title">24/7 Threat Monitoring</h2>
+            <p class="safety-description">Continuous surveillance of your digital infrastructure using AI-powered systems to detect and neutralize potential threats before they can cause harm.</p>
+        </div>
+    </div>
+
+    <div class="tips-section">
+        <div class="tips-container">
+            <div class="tip-card">
+                <div class="tip-number">01</div>
+                <div class="tip-content">
+                    <h3>Password Management</h3>
+                    <p>Create strong, unique passwords for each account using a combination of uppercase and lowercase letters, numbers, and special characters. Utilize a password manager to securely store and manage your credentials.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-number">02</div>
+                <div class="tip-content">
+                    <h3>Regular Updates</h3>
+                    <p>Keep your systems and software up to date with the latest security patches. Enable automatic updates whenever possible to ensure you're protected against known vulnerabilities.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-number">03</div>
+                <div class="tip-content">
+                    <h3>Data Backup</h3>
+                    <p>Implement a comprehensive backup strategy following the 3-2-1 rule: maintain three copies of important data, store them on two different types of media, and keep one copy off-site.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Security Audits</a></li>
+                    <li><a href="#">Penetration Testing</a></li>
+                    <li><a href="#">Compliance</a></li>
+                    <li><a href="#">Training</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">API Reference</a></li>
+                    <li><a href="#">Status</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Digital Safety. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-bg', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: '#0000FF'
+                    },
+                    shape: {
+                        type: 'circle',
+                        stroke: {
+                            width: 0,
+                            color: '#000000'
+                        }
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: false,
+                        anim: {
+                            enable: false,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: false,
+                            speed: 40,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#0000FF',
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: 'none',
+                        random: false,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: 'repulse'
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 400,
+                            line_linked: {
+                                opacity: 1
+                            }
+                        },
+                        bubble: {
+                            distance: 400,
+                            size: 40,
+                            duration: 2,
+                            opacity: 8,
+                            speed: 3
+                        },
+                        repulse: {
+                            distance: 200,
+                            duration: 0.4
+                        },
+                        push: {
+                            particles_nb: 4
+                        },
+                        remove: {
+                            particles_nb: 2
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+        });
+    </script>
+</body>
+</html>
