@@ -1,360 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team - Paradigm Research</title>
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Our Team - Paradigm Research</title>
+   <style>
+       @keyframes fadeIn {
+           from { opacity: 0; }
+           to { opacity: 1; }
+       }
 
-        @keyframes slideUp {
-            from {
-                transform: translateY(40px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
 
-        @keyframes glowPulse {
-            0% { box-shadow: 0 0 20px rgba(0, 0, 255, 0.1); }
-            50% { box-shadow: 0 0 30px rgba(0, 0, 255, 0.2); }
-            100% { box-shadow: 0 0 20px rgba(0, 0, 255, 0.1); }
-        }
+       @keyframes slideUp {
+           from {
+               transform: translateY(40px);
+               opacity: 0;
+           }
+           to {
+               transform: translateY(0);
+               opacity: 1;
+           }
+       }
 
-        @keyframes floatAnimation {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
 
-        @keyframes rotateBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+       @keyframes glowPulse {
+           0% { box-shadow: 0 0 20px rgba(0, 0, 255, 0.1); }
+           50% { box-shadow: 0 0 30px rgba(0, 0, 255, 0.2); }
+           100% { box-shadow: 0 0 20px rgba(0, 0, 255, 0.1); }
+       }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: white;
-            color: #333;
-            overflow-x: hidden;
-        }
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            padding: 1rem;
-        }
+       @keyframes floatAnimation {
+           0% { transform: translateY(0px); }
+           50% { transform: translateY(-10px); }
+           100% { transform: translateY(0px); }
+       }
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
 
-        nav li {
-            margin: 0 20px;
-        }
+       @keyframes rotateBackground {
+           0% { background-position: 0% 50%; }
+           50% { background-position: 100% 50%; }
+           100% { background-position: 0% 50%; }
+       }
 
-        nav a {
-            text-decoration: none;
-            color: #000;
-            font-weight: 300;
-            transition: color 0.3s;
-        }
 
-        nav a:hover {
-            color: #0000FF;
-        }
+       body, html {
+           margin: 0;
+           padding: 0;
+           height: 100%;
+           font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+           background-color: white;
+           color: #333;
+           overflow-x: hidden;
+       }
 
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: white;
-            background-size: 400% 400%;
-            animation: rotateBackground 15s ease infinite;
-            position: relative;
-            overflow: hidden;
-        }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 100;
-            margin: 0;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards 0.5s;
-        }
+       nav {
+           position: fixed;
+           top: 0;
+           width: 100%;
+           background: rgba(255, 255, 255, 0.8);
+           backdrop-filter: blur(5px);
+           z-index: 1000;
+           padding: 1rem;
+       }
 
-        .hero p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            max-width: 600px;
-            text-align: center;
-            margin: 20px 0;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards 1s;
-        }
 
-        .team-grid {
-            display: flex;
-            justify-content: center;
-            max-width: 1400px;
-            margin: 40px auto;
-            padding: 20px;
-        }
+       nav ul {
+           display: flex;
+           justify-content: center;
+           list-style: none;
+           margin: 0;
+           padding: 0;
+       }
 
-        .team-member {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            opacity: 0;
-            animation: slideUp 0.8s ease forwards;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            max-width: 400px;
-            margin: 0 auto;
-        }
 
-        .team-member:hover {
-            transform: translateY(-10px);
-        }
+       nav li {
+           margin: 0 20px;
+       }
 
-        .member-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            overflow: hidden;
-            border: 3px solid #0000FF;
-            position: relative;
-            animation: floatAnimation 6s ease-in-out infinite;
-        }
 
-        .member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(20%);
-            transition: filter 0.3s ease;
-        }
+       nav a {
+           text-decoration: none;
+           color: #000;
+           font-weight: 300;
+           transition: color 0.3s;
+       }
 
-        .team-member:hover .member-image img {
-            filter: grayscale(0%);
-        }
 
-        .member-name {
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin: 10px 0;
-        }
+       nav a:hover {
+           color: #0000FF;
+       }
 
-        .member-title {
-            color: #0000FF;
-            font-size: 1rem;
-            font-weight: 400;
-            margin-bottom: 15px;
-        }
 
-        .member-bio {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #666;
-            margin-bottom: 20px;
-        }
+       .hero {
+           height: 100vh;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           background-color: white;
+           background-size: 400% 400%;
+           animation: rotateBackground 15s ease infinite;
+           position: relative;
+           overflow: hidden;
+       }
 
-        .member-stats {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 0, 255, 0.1);
-        }
 
-        .expertise-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            margin-top: 15px;
-        }
+       .hero h1 {
+           font-size: 4rem;
+           font-weight: 100;
+           margin: 0;
+           opacity: 0;
+           animation: fadeIn 1s ease forwards 0.5s;
+       }
 
-        .tag {
-            background: rgba(0, 0, 255, 0.1);
-            color: #0000FF;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-        }
 
-        .tag:hover {
-            background: rgba(0, 0, 255, 0.2);
-            transform: scale(1.05);
-        }
+       .hero p {
+           font-size: 1.2rem;
+           font-weight: 300;
+           max-width: 600px;
+           text-align: center;
+           margin: 20px 0;
+           opacity: 0;
+           animation: fadeIn 1s ease forwards 1s;
+       }
 
-        .achievements-section {
-            position: relative;
-            padding: 80px 0;
-            background: linear-gradient(to right, #ffffff, #f8f9fa);
-        }
 
-        .achievement-cards {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+       .team-grid {
+           display: flex;
+           justify-content: center;
+           max-width: 1400px;
+           margin: 40px auto;
+           padding: 20px;
+       }
 
-        .achievement-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
 
-        .achievement-card:hover {
-            transform: translateY(-5px);
-        }
+       .team-member {
+           background: rgba(255, 255, 255, 0.95);
+           border-radius: 20px;
+           padding: 30px;
+           text-align: center;
+           opacity: 0;
+           animation: slideUp 0.8s ease forwards;
+           backdrop-filter: blur(10px);
+           transition: transform 0.3s ease;
+           position: relative;
+           overflow: hidden;
+           max-width: 400px;
+           margin: 0 auto;
+       }
 
-        .achievement-icon {
-            font-size: 2.5rem;
-            color: #0000FF;
-            margin-bottom: 15px;
-        }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: floatAnimation 2s infinite;
-            cursor: pointer;
-        }
+       .team-member:hover {
+           transform: translateY(-10px);
+       }
 
-        .scroll-indicator::after {
-            content: '↓';
-            font-size: 2rem;
-            color: #0000FF;
-        }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-                padding: 0 20px;
-                text-align: center;
-            }
+       .member-image {
+           width: 180px;
+           height: 180px;
+           border-radius: 50%;
+           margin: 0 auto 20px;
+           overflow: hidden;
+           border: 3px solid #0000FF;
+           position: relative;
+           animation: floatAnimation 6s ease-in-out infinite;
+       }
 
-            .team-grid {
-                flex-direction: column;
-                padding: 20px;
-            }
-        }
-    </style>
+
+       .member-image img {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+           filter: grayscale(20%);
+           transition: filter 0.3s ease;
+       }
+
+
+       .team-member:hover .member-image img {
+           filter: grayscale(0%);
+       }
+
+
+       .member-name {
+           font-size: 1.8rem;
+           font-weight: 300;
+           margin: 10px 0;
+       }
+
+
+       .member-title {
+           color: #0000FF;
+           font-size: 1rem;
+           font-weight: 400;
+           margin-bottom: 15px;
+       }
+
+
+       .member-bio {
+           font-size: 0.95rem;
+           line-height: 1.6;
+           color: #666;
+           margin-bottom: 20px;
+       }
+
+
+       .member-stats {
+           display: flex;
+           justify-content: center;
+           gap: 20px;
+           margin-top: 20px;
+           padding-top: 20px;
+           border-top: 1px solid rgba(0, 0, 255, 0.1);
+       }
+
+
+       .expertise-tags {
+           display: flex;
+           flex-wrap: wrap;
+           gap: 8px;
+           justify-content: center;
+           margin-top: 15px;
+       }
+
+
+       .tag {
+           background: rgba(0, 0, 255, 0.1);
+           color: #0000FF;
+           padding: 4px 12px;
+           border-radius: 15px;
+           font-size: 0.8rem;
+           transition: all 0.3s ease;
+       }
+
+
+       .tag:hover {
+           background: rgba(0, 0, 255, 0.2);
+           transform: scale(1.05);
+       }
+
+
+       .ambitions-section {
+           position: relative;
+           padding: 80px 0;
+           background: linear-gradient(to right, #ffffff, #f8f9fa);
+       }
+
+
+       .ambitions-cards {
+           display: flex;
+           justify-content: center;
+           flex-wrap: wrap;
+           gap: 30px;
+           max-width: 1400px;
+           margin: 0 auto;
+           padding: 20px;
+       }
+
+
+       .ambitions-card {
+           background: white;
+           padding: 30px;
+           border-radius: 15px;
+           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+           width: 300px;
+           text-align: center;
+           transition: transform 0.3s ease;
+       }
+
+
+       .ambitions-card:hover {
+           transform: translateY(-5px);
+       }
+
+
+       .ambitions-icon {
+           font-size: 2.5rem;
+           color: #0000FF;
+           margin-bottom: 15px;
+       }
+
+
+       .scroll-indicator {
+           position: absolute;
+           bottom: 30px;
+           left: 50%;
+           transform: translateX(-50%);
+           animation: floatAnimation 2s infinite;
+           cursor: pointer;
+       }
+
+
+       .scroll-indicator::after {
+           content: '↓';
+           font-size: 2rem;
+           color: #0000FF;
+       }
+
+
+       @media (max-width: 768px) {
+           .hero h1 {
+               font-size: 2.5rem;
+               padding: 0 20px;
+               text-align: center;
+           }
+
+
+           .team-grid {
+               flex-direction: column;
+               padding: 20px;
+           }
+       }
+   </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#Executives">Executives</a></li>
-            <li><a href="#achievements">Achievements</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero" id="home">
-        <h1>Meet Our Visionaries</h1>
-        <p>The brilliant minds behind Paradigm Research, pushing the boundaries of cybersecurity innovation and shaping the future of digital protection.</p>
-        <div class="scroll-indicator"></div>
-    </section>
-
-    <div class="team-grid" id="team">
-        <div class="team-member" style="animation-delay: 0.2s;">
-            <div class="member-image">
-                <img src="/api/placeholder/180/180" alt="">
-            </div>
-            <h2 class="member-name">Osman Moussa-bahdon</h2>
-            <div class="member-title">Chief Security Architect</div>
-            <p class="member-bio">
-                
-                Working within the realm of Penetration Testing Softwares in hopes of developing  security solutions for enterpises, and in order to lead our next-generation with defense systems.
+   <nav>
+       <ul>
+           <li><a href="#Executives">Executives</a></li>
+           <li><a href="#ambitions">Ambitions</a></li>
+       </ul>
+   </nav>
 
 
+   <section class="hero" id="home">
+       <h1>Meet Our Visionaries</h1>
+       <p>The minds behind Paradigm Research, who seeks to push the boundaries of cybersecurity innovation and shaping the future of digital protection.</p>
+       <div class="scroll-indicator"></div>
+   </section>
 
-            </p>
-            <div class="expertise-tags">
-                <span class="tag">Penetration Testing Software Builder </span>
-                <span class="tag">Enterprise Security Detection Development</span>
-                <span class="tag">Zero-Trust Architecture</span>
-            </div>
-            <div class="member-stats">
-                <div class="stat">
-                    <div class="stat-number">Currently Publishing </div>
-                    <div class="stat-label">Patent</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Research Publications</div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <section class="achievements-section" id="achievements">
-        <div class="achievement-cards">
-            <div class="achievement-card">
-                <div class="achievement-icon">🏆</div>
-                <h3>Industry Recognition</h3>
-                <p>Multiple awards for breakthrough innovations in cybersecurity</p>
-            </div>
-            <div class="achievement-card">
-                <div class="achievement-icon">🔒</div>
-                <h3>Security Excellence</h3>
-                <p>99.9% success rate in threat prevention and detection</p>
-            </div>
-            <div class="achievement-card">
-                <div class="achievement-icon">📚</div>
-                <h3>Research Impact</h3>
-                <p>Over 200 peer-reviewed publications in leading journals</p>
-            </div>
-        </div>
-    </section>
+   <div class="team-grid" id="team">
+       <div class="team-member" style="animation-delay: 0.2s;">
+           <div class="member-image">
+               <img src="/api/placeholder/180/180" alt="">
+           </div>
+           <h2 class="member-name">Osman Moussa-bahdon</h2>
+           <div class="member-title">Chief Security Architect</div>
+           <p class="member-bio">
+              
+               Working within the realm of Penetration Testing Softwares in hopes of developing  security solutions for enterpises, and in order to lead our next-generation with defense systems.
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+
+
+
+
+
+           </p>
+           <div class="expertise-tags">
+               <span class="tag">Penetration Testing Software Builder </span>
+               <span class="tag">Enterprise Security Detection Development</span>
+               <span class="tag">Zero-Trust Architecture</span>
+           </div>
+           <div class="member-stats">
+               <div class="stat">
+                   <div class="stat-number">Currently Publishing </div>
+                   <div class="stat-label">Patent</div>
+               </div>
+               <div class="stat">
+                   <div class="stat-number">3</div>
+                   <div class="stat-label">Research Publications</div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+
+   <section class="ambitions-section" id="ambitions">
+       <div class="ambitions-cards">
+           <div class="ambitions-card">
+               <div class="ambitions-icon">🏆</div>
+               <h3>Industry Recognition</h3>
+               <p>Our Company Goal is To Reach a Wide Range of Credibilty and Pioneer within the Cyberspace. </p>
+           </div>
+           <div class="ambitions-card">
+               <div class="ambitions-icon">🔒</div>
+               <h3>Security Excellence</h3>
+               <p>Increase success rate in threat prevention and detection.</p>
+           </div>
+           <div class="ambitions-card">
+               <div class="ambitions-icon">📚</div>
+               <h3>Research Impact</h3>
+               <p>Our goal by 2027 is to receive 200 peer-reviewed publications in leading journals and research papers.</p>
+           </div>
+       </div>
+   </section>
+
+
+   <script>
+       // Smooth scrolling for navigation links
+       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+           anchor.addEventListener('click', function (e) {
+               e.preventDefault();
+               document.querySelector(this.getAttribute('href')).scrollIntoView({
+                   behavior: 'smooth'
+               });
+           });
+       });
+   </script>
 </body>
 </html>
+
